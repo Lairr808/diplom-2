@@ -29,7 +29,7 @@ public class OrderReceivingTest {
 
     @Test
     public void orderReceivingIfUserAuthorized() {// получение заказа авторизованным пользователем
-        ValidatableResponse response = userClient.create(user);
+        userClient.create(user);
         ValidatableResponse loginResponse = userClient.login(UserCredentials.from(user));//авторизация
         accessToken = loginResponse.extract().path("accessToken");//тащит токен
         ValidatableResponse orderReceivingResponse = orderClient.receivingOrder(accessToken);//получить заказа

@@ -32,7 +32,7 @@ public class UserChangeTest {
 
     @Test
     public void userAuthorizedCanChange(){ //изменение данных авторизованного пользователя
-        ValidatableResponse response = userClient.create(user);//создай
+        userClient.create(user);//создай
         ValidatableResponse loginResponse = userClient.login(UserCredentials.from(user));//авторизация
         accessToken = loginResponse.extract().path("accessToken");//тащит токен
         ValidatableResponse changeResponse = userClient.change(userChange, accessToken);//изменения

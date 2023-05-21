@@ -35,7 +35,7 @@ public class OrderCreatedTest {
 
     @Test
     public void orderCreationIfUserAuthorized(){// создание заказа авторизованным пользователем с ингредиентом
-        ValidatableResponse response = userClient.create(user);
+        userClient.create(user);
         ValidatableResponse loginResponse = userClient.login(UserCredentials.from(user));//авторизация
         accessToken = loginResponse.extract().path("accessToken");//тащит токен
         ValidatableResponse orderCreateResponse = orderClient.createOrder(order);//создание заказа
@@ -52,7 +52,7 @@ public class OrderCreatedTest {
 
     @Test
     public void orderCreationIfUserAuthorizedWithoutIngredient(){// создание заказа авторизованным пользователем без ингредиента
-        ValidatableResponse response = userClient.create(user);
+        userClient.create(user);
         ValidatableResponse loginResponse = userClient.login(UserCredentials.from(user));//авторизация
         accessToken = loginResponse.extract().path("accessToken");//тащит токен
         ValidatableResponse orderCreateResponse = orderClient.createOrder(orderNullIngredients);//создание заказа
@@ -62,7 +62,7 @@ public class OrderCreatedTest {
 
     @Test
     public void orderCreationIfUserAuthorizedIncorrectIngredient(){// создание заказа авторизованным пользователем некорректный хеш ингредиента
-        ValidatableResponse response = userClient.create(user);
+        userClient.create(user);
         ValidatableResponse loginResponse = userClient.login(UserCredentials.from(user));//авторизация
         accessToken = loginResponse.extract().path("accessToken");//тащит токен
         ValidatableResponse orderCreateResponse = orderClient.createOrder(orderIncorrectIngredients);//создание заказа
